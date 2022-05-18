@@ -323,25 +323,22 @@ console.log(abs(-30));
 
 ////Generating emails//////
 
-const emailFromLogin = () => {
-    const userLogin = String(document.getElementById('userLogin').value);
-    document.getElementById("valueInputEmailFromLogin").innerHTML = userLogin + '@covidconspiracy.il';
-    return userLogin;
+const emailFromLogin = (login) => login += '@covidconspiracy.il';
 
-}
+const loginFromName = (firstName, lastName) => {
 
-const loginFromName = () => {
-    const firstName = String(document.getElementById('first_name').value);
-    const lastName = String(document.getElementById('last_name').value);
-
-    document.getElementById("valueInputLoginFromName").innerHTML = 'Your login is: ' + lastName.substring(0, 4).toLowerCase() + firstName.substring(0, 3).toLowerCase();
+    const login = lastName.substring(0, 4).toLowerCase() + firstName.substring(0, 3).toLowerCase();
+    return login;
 
 }
 
 const emailFromName = () => {
 
+    const firstName = String(document.getElementById('first_name').value);
+    const lastName = String(document.getElementById('last_name').value);
 
-    document.getElementById("valueInputEmailFromName").innerHTML = loginFromName() + '. Your email is: ' + loginFromName() + '@covidconspiracy.il';
+
+    document.getElementById("valueInputEmailFromName").innerHTML = 'Your login is: ' + loginFromName(firstName, lastName) + '. Your email is: ' + emailFromLogin(loginFromName(firstName, lastName));
 
 }
 
